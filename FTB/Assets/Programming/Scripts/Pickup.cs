@@ -21,7 +21,7 @@ public class Pickup : MonoBehaviour {
 	}
 
 	void Awake(){
-		Map.mapObjects.Add (gameObject);
+		//Map.mapObjects.Add (gameObject);
 	}
 
 	// Update is called once per frame

@@ -3,36 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour {
-
-	public class ParallaxLayer {
-		public float speed;
-		public List<GameObject> layerObjects = new List<GameObject> ();
-
-		public void Offset(){
-			Vector3 movement = new Vector3 (1, 0, 0);
-			for (int i = 0; i < layerObjects.Count; i++) {
-				
-				layerObjects [i].transform.position -= movement * speed;
-			}
-		}
-	}
-
-	public float mapSpeed = 1.2f;
-	public static List<ParallaxLayer> mapObjects = new List<ParallaxLayer>();
+	public static float mapSpeed = 1.2f;
+	public static float maxMapSpeed = 5;
+	//public static List<ParallaxLayer> layers = new List<ParallaxLayer>();
+	public int ParallaxLayers;
 	float offset;
 	public List<GameObject> threats = new List<GameObject>();
 	public List<GameObject> coinChunks = new List<GameObject>();
-
-
+	public static Parallax parallax = new Parallax();
 
 	// Use this for initialization
 	void Start () {
-		mapObjects.Clear();
+		parallax.layers.Clear();
+		for (int i = 0; i < ParallaxLayers; i++) {
+			parallax.layers.Add (new ParallaxLayer ());
+		}
+		parallax.InitLayers ();
 
-
-		
-		InvokeRepeating ("SpawnObstacle", 10f, 15f);
-		InvokeRepeating ("SpawnCoins", 10f, 15f);
+		//InvokeRepeating ("SpawnObstacle", 10f, 15f);
+		//InvokeRepeating ("SpawnCoins", 10f, 15f);
 	}
 
 	void SpawnObstacle(){
@@ -45,13 +34,16 @@ public class Map : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		offset += mapSpeed* Time.deltaTime;
-		for (int i = 0; i < mapObjects.Count; i++) {
-			for (int j = 0; j < mapObjects [i].layerObjects.Count; i++) {
-				ParallaxLayer layer = mapObjects [i];
-				layer.speed = mapSpeed / j;
-			}
+		for (int i = 0; i < parallax.layers.Count; i++) {
+			ParallaxLayer layer = parallax.layers [i];
+			layer.speed = mapSpeed / (i + 1);
+			layer.Offset ();
+
+			for (int j = 0; j < layer.layerObjects.Count; j++) {
+				GameObject obj = layer.layerObjects [j];
+			} 
 		}
-		mapSpeed += 0.06f * Time.deltaTime;
+		if(mapSpeed < maxMapSpeed)
+			mapSpeed += 0.06f * Time.deltaTime;
 	}
 }
