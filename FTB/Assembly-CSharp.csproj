@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EF287001-A8CB-8896-D6EF-23C84291CDD3}</ProjectGuid>
+    <ProjectGuid>{F9052490-4929-16DF-67DA-5C67A92AE48B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,7 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Art\Scripts\FloParticles.cs" />
+     <Compile Include="Assets\Art\Scripts\ParticleLifetime.cs" />
      <Compile Include="Assets\Prefabs\Animations\controllers\TestAnimator.cs" />
+     <Compile Include="Assets\Programming\Scripts\DestroyAfterAnimation.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

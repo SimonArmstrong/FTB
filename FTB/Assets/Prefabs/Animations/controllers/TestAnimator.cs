@@ -6,6 +6,7 @@ public class TestAnimator : MonoBehaviour {
 
 	public Animator animator;
 	public Rigidbody2D rb;
+	public float rotationAmount;
 	public float maxForce;
 	public float maxFallSpeed;
 
@@ -30,10 +31,13 @@ public class TestAnimator : MonoBehaviour {
 		if (flap) {
 			from = transform.position;
 			Flap (from + Vector2.up);
+
 		}
 		if (rb.velocity.magnitude > maxForce) {
 			rb.velocity = rb.velocity.normalized * maxForce;
 		}
+		Vector3 eulerVeloityTranslation = new Vector3 (0, 0, rb.velocity.y * rotationAmount);
+		transform.rotation = Quaternion.Euler(eulerVeloityTranslation);
 		animator.SetBool ("flap", flap);
 	}
 }
