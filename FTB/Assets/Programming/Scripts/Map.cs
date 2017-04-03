@@ -9,7 +9,7 @@ public class Map : MonoBehaviour {
 		public List<GameObject> layerObjects = new List<GameObject> ();
 
 		public void Offset(){
-			Vector2 movement = new Vector2 (1, 0);
+			Vector3 movement = new Vector3 (1, 0, 0);
 			for (int i = 0; i < layerObjects.Count; i++) {
 				
 				layerObjects [i].transform.position -= movement * speed;
@@ -18,7 +18,7 @@ public class Map : MonoBehaviour {
 	}
 
 	public float mapSpeed = 1.2f;
-	public static List<GameObject> mapObjects = new List<GameObject>();
+	public static List<ParallaxLayer> mapObjects = new List<ParallaxLayer>();
 	float offset;
 	public List<GameObject> threats = new List<GameObject>();
 	public List<GameObject> coinChunks = new List<GameObject>();
@@ -28,8 +28,9 @@ public class Map : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mapObjects.Clear();
-		mapObjects.AddRange(GameObject.FindGameObjectsWithTag ("map"));
-		mapObjects.AddRange(GameObject.FindGameObjectsWithTag ("coin"));
+
+
+		
 		InvokeRepeating ("SpawnObstacle", 10f, 15f);
 		InvokeRepeating ("SpawnCoins", 10f, 15f);
 	}
@@ -46,7 +47,10 @@ public class Map : MonoBehaviour {
 	void Update () {
 		offset += mapSpeed* Time.deltaTime;
 		for (int i = 0; i < mapObjects.Count; i++) {
-			mapObjects [i].transform.position -= new Vector3 (mapSpeed, 0, 0) * Time.deltaTime;
+			for (int j = 0; j < mapObjects [i].layerObjects.Count; i++) {
+				ParallaxLayer layer = mapObjects [i];
+				layer.speed = mapSpeed / j;
+			}
 		}
 		mapSpeed += 0.06f * Time.deltaTime;
 	}
