@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 6f7f74e7e123a224ab21ba5ceca6b0fb
-timeCreated: 1491196222
+timeCreated: 1491197209
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: louds_0
+    21300002: louds_1
+    21300004: louds_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -68,7 +71,46 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: louds_0
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 780
+        width: 1032
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: louds_1
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 791
+        width: 177
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: louds_2
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 494
+        width: 277
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

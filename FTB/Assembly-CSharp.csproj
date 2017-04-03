@@ -50,6 +50,11 @@
      <Compile Include="Assets\Art\Scripts\ParticleLifetime.cs" />
      <Compile Include="Assets\Prefabs\Animations\controllers\TestAnimator.cs" />
      <Compile Include="Assets\Programming\Scripts\DestroyAfterAnimation.cs" />
+     <Compile Include="Assets\Programming\Scripts\Generate.cs" />
+     <Compile Include="Assets\Programming\Scripts\Map.cs" />
+     <Compile Include="Assets\Programming\Scripts\Obstacle.cs" />
+     <Compile Include="Assets\Programming\Scripts\Pickup.cs" />
+     <Compile Include="Assets\Programming\Scripts\Player.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
