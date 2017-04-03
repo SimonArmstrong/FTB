@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Map : MonoBehaviour {
 	public static float mapSpeed = 1.2f;
-	public static float maxMapSpeed = 5;
+	public static float gameSpeed = 1.0f;
+	public static float maxMapSpeed = 10;
+	private bool paused = false;
 	//public static List<ParallaxLayer> layers = new List<ParallaxLayer>();
 	public int ParallaxLayers;
 	float offset;
@@ -18,6 +20,8 @@ public class Map : MonoBehaviour {
 		for (int i = 0; i < ParallaxLayers; i++) {
 			parallax.layers.Add (new ParallaxLayer ());
 		}
+
+		parallax.layers [3].layerObjects.Add (GameObject.FindGameObjectWithTag("P_Layer3"));
 		parallax.InitLayers ();
 
 		//InvokeRepeating ("SpawnObstacle", 10f, 15f);
@@ -34,6 +38,15 @@ public class Map : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			paused = !paused;
+		}
+		if (paused) {
+			gameSpeed = 0;
+		} else {
+			gameSpeed = 1;
+		}
+
 		for (int i = 0; i < parallax.layers.Count; i++) {
 			ParallaxLayer layer = parallax.layers [i];
 			layer.speed = mapSpeed / (i + 1);
@@ -44,6 +57,6 @@ public class Map : MonoBehaviour {
 			} 
 		}
 		if(mapSpeed < maxMapSpeed)
-			mapSpeed += 0.06f * Time.deltaTime;
+			mapSpeed += 0.1f * Time.deltaTime * gameSpeed;
 	}
 }

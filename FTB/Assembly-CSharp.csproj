@@ -49,8 +49,8 @@
      <Compile Include="Assets\Art\Scripts\FloParticles.cs" />
      <Compile Include="Assets\Art\Scripts\ParticleLifetime.cs" />
      <Compile Include="Assets\Art\Scripts\SpawnLayers.cs" />
-     <Compile Include="Assets\Prefabs\Animations\controllers\TestAnimator.cs" />
      <Compile Include="Assets\Programming\Scripts\DestroyAfterAnimation.cs" />
+     <Compile Include="Assets\Programming\Scripts\Flo.cs" />
      <Compile Include="Assets\Programming\Scripts\Generate.cs" />
      <Compile Include="Assets\Programming\Scripts\Map.cs" />
      <Compile Include="Assets\Programming\Scripts\Obstacle.cs" />

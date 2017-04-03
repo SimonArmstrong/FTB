@@ -9,7 +9,7 @@ public class ParallaxLayer {
 	public List<GameObject> layerObjects = new List<GameObject> ();
 
 	public void Offset(){
-		Vector3 movement = new Vector3 (1, 0, 0);
+		Vector3 movement = new Vector3 (1 * Map.gameSpeed, 0, 0);
 		for (int i = 0; i < layerObjects.Count; i++) {
 			layerObjects [i].GetComponent<SpriteRenderer> ().sortingOrder = -(layerID);
 			layerObjects [i].transform.position -= movement * speed * Time.deltaTime;

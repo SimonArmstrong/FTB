@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 3a0ea805de0829b42a6a9f427be3db0f
-timeCreated: 1491034107
+timeCreated: 1491207576
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: obs_01_0
+    21300002: obs_01_1
+    21300004: obs_01_2
+    21300006: obs_01_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -74,12 +77,51 @@ TextureImporter:
       name: obs_01_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 66
-        width: 60
-        height: 98
+        x: 45
+        y: 121
+        width: 25
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: obs_01_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 69
+        width: 59
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: obs_01_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 9
+        width: 37
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: obs_01_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 7
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

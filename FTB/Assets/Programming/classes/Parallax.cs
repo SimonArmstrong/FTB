@@ -10,7 +10,12 @@ public class Parallax {
 			layers [i].layerID = i;
 		}
 	}
+
 	public void AddToLayer(GameObject obj, int layer){
 		layers [layer].layerObjects.Add (obj);
+	}
+
+	public ParallaxLayer GetLayer(int layer){
+		return layers [layer];
 	}
 }

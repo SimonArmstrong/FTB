@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleLifetime : MonoBehaviour {
 	public float time;
 	public bool fade;
+	public Vector2 direction;
 	private Color startColor;
 	private float a_time;
 	// Use this for initialization
@@ -24,6 +25,6 @@ public class ParticleLifetime : MonoBehaviour {
 			Color newColor = new Color(startColor.r, startColor.g, startColor.b, startColor.a * a_time);
 			GetComponent<SpriteRenderer> ().color = newColor;
 		}
-		transform.position = new Vector2 (transform.position.x - a_time * Time.deltaTime * 2, transform.position.y - a_time * Time.deltaTime);
+		transform.position = new Vector2 (transform.position.x - Map.mapSpeed * Time.deltaTime, transform.position.y - a_time * Time.deltaTime);
 	}
 }

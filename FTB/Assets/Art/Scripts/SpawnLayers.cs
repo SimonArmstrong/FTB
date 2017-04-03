@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnLayers : MonoBehaviour {
-	public List<GameObject> bgTile = new List<GameObject>();
-	public List<GameObject> clouds = new List<GameObject>();
+	public List<GameObject> Background = new List<GameObject>();
+	public List<GameObject> MidBackground = new List<GameObject>();
+	public List<GameObject> Main = new List<GameObject> ();
+	public List<GameObject> coins = new List<GameObject> ();
 	public float timeOffset;
 	private float time;
 	void Start(){
@@ -12,16 +14,23 @@ public class SpawnLayers : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		time -= Time.deltaTime;
+		time -= Time.deltaTime * Map.gameSpeed;
 		if (time <= 0) {
 			int random_cloud = Random.Range (0, 3);
 			Vector3 randomYPosition = new Vector3 (transform.position.x,
 				Random.Range(-5, 5));
-			Map.parallax.AddToLayer (Instantiate<GameObject> (clouds [random_cloud], randomYPosition, Quaternion.identity), 2);
-			Map.parallax.AddToLayer (Instantiate<GameObject> (bgTile [Random.Range(0, 2)], transform.position, Quaternion.identity), 3);
+			Vector3 randomRotation = new Vector3 (
+				0, 0,
+				Random.Range(0, 4) * 90
+			);
+			Vector3 randomHeight = new Vector3 (transform.position.x, Random.Range(-5, 5), 0);
+			Map.parallax.AddToLayer (Instantiate<GameObject> (Main[Random.Range(0, Main.Count)], randomYPosition, Quaternion.Euler(randomRotation)), 0);
+			Map.parallax.AddToLayer (Instantiate<GameObject> (coins[0], randomHeight, Quaternion.identity), 0);
+			Map.parallax.AddToLayer (Instantiate<GameObject> (MidBackground [random_cloud], randomYPosition, Quaternion.identity), 2);
+			Map.parallax.AddToLayer (Instantiate<GameObject> (Background [Random.Range(0, Background.Count)], transform.position, Quaternion.identity), 3);
 			time = timeOffset;
 		}
 		if(timeOffset > 1)
-			timeOffset -= Map.mapSpeed;
+			timeOffset -= 0.1f * Time.deltaTime * Map.gameSpeed;
 	}
 }

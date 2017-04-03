@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour {
 
 	float value = 1f;
-
+	public GameObject pickupParticle;
 
 	// Use this for initialization
 	void Start () {
@@ -14,14 +14,18 @@ public class Pickup : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
-			gameObject.SetActive (false);
+			//Instantiate<GameObject> (pickupParticle, transform.position, Quaternion.identity);
+			//Destroy (gameObject);
 			//increment player coins
-			Player.currency += value;
+			Flo.currency += value;
 		}
 	}
 
-	void Awake(){
-		//Map.mapObjects.Add (gameObject);
+	void OnDestroy(){
+		for (int i = 0; i < Map.parallax.layers [0].layerObjects.Count; i++) {
+			if(Map.parallax.layers[0].layerObjects[i] == gameObject)
+				Map.parallax.GetLayer (0).layerObjects.RemoveAt (i);
+		}
 	}
 
 	// Update is called once per frame
