@@ -10,8 +10,11 @@ public class Flo : MonoBehaviour {
 	public float maxForce;
 	public float maxFallSpeed;
 	public static float currency;
+	public static float distance;
 	private float flapPower;
 	public GameObject trail;
+	[HideInInspector]
+	public static AudioSource AS;
 
 	public float flapForce;
 
@@ -19,6 +22,7 @@ public class Flo : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		AS = GetComponent<AudioSource> ();
 	}
 
 	Vector2 from = new Vector2();
@@ -56,12 +60,5 @@ public class Flo : MonoBehaviour {
 		trail.transform.localScale = new Vector3 (0.1f * Map.mapSpeed, 1, 1);
 
 		maxForce *= Map.gameSpeed;
-	}
-
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "coin") {
-			Map.parallax.RemoveItem (other.gameObject);
-			Destroy (other.gameObject);
-		}
 	}
 }

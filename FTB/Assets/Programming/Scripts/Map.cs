@@ -56,6 +56,8 @@ public class Map : MonoBehaviour {
 				GameObject obj = layer.layerObjects [j];
 			} 
 		}
+
+		Flo.distance += mapSpeed * Time.deltaTime * gameSpeed;
 		if(mapSpeed < maxMapSpeed)
 			mapSpeed += 0.1f * Time.deltaTime * gameSpeed;
 	}
