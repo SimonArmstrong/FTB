@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour {
-	public static float mapSpeed = 1.2f;
+	public static float mapSpeed = 5.2f;
 	public static float gameSpeed = 1.0f;
-	public static float maxMapSpeed = 10;
+	public static float maxMapSpeed = 15;
 	private bool paused = false;
 	//public static List<ParallaxLayer> layers = new List<ParallaxLayer>();
 	public int ParallaxLayers;

@@ -57,4 +57,19 @@ public class Flo : MonoBehaviour {
 
 		maxForce *= Map.gameSpeed;
 	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "coin") {
+			for (int i = 0; i < Map.parallax.layers.Count; i++) {
+				for(int j = 0; j < Map.parallax.layers[i].layerObjects.Count; j++){
+					if (ReferenceEquals(other.gameObject, Map.parallax.layers [i].layerObjects [j])) {
+						Map.parallax.layers [i].layerObjects.RemoveAt(j);
+						break;
+					}
+				}
+			}
+
+			Destroy (other.gameObject);
+		}
+	}
 }

@@ -24,10 +24,10 @@ public class SpawnLayers : MonoBehaviour {
 				Random.Range(0, 4) * 90
 			);
 			Vector3 randomHeight = new Vector3 (transform.position.x, Random.Range(-5, 5), 0);
-			Map.parallax.AddToLayer (Instantiate<GameObject> (Main[Random.Range(0, Main.Count)], randomYPosition, Quaternion.Euler(randomRotation)), 0);
-			Map.parallax.AddToLayer (Instantiate<GameObject> (coins[0], randomHeight, Quaternion.identity), 0);
-			Map.parallax.AddToLayer (Instantiate<GameObject> (MidBackground [random_cloud], randomYPosition, Quaternion.identity), 2);
-			Map.parallax.AddToLayer (Instantiate<GameObject> (Background [Random.Range(0, Background.Count)], transform.position, Quaternion.identity), 3);
+			if(Main.Count > 0) Map.parallax.AddToLayer (Instantiate<GameObject> (Main[Random.Range(0, Main.Count)], randomYPosition, Quaternion.Euler(randomRotation)), 0);
+			if(coins.Count > 0) Map.parallax.AddToLayer (Instantiate<GameObject> (coins[0], randomHeight, Quaternion.identity), 0);
+			if(MidBackground.Count > 0) Map.parallax.AddToLayer (Instantiate<GameObject> (MidBackground [random_cloud], randomYPosition, Quaternion.identity), 2);
+			if(Background.Count > 0) Map.parallax.AddToLayer (Instantiate<GameObject> (Background [Random.Range(0, Background.Count)], transform.position, Quaternion.identity), 3);
 			time = timeOffset;
 		}
 		if(timeOffset > 1)
