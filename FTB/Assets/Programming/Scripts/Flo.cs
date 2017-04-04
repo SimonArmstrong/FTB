@@ -18,6 +18,10 @@ public class Flo : MonoBehaviour {
 
 	public float flapForce;
 
+	public bool demo;
+	private float hopTimer;
+	private float hopTimerOffset = 0.6f;
+
 	[System.Serializable]
 	public struct Stat{
 		public float cur;
@@ -31,8 +35,13 @@ public class Flo : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		AS = GetComponent<AudioSource> ();
+
+		hopTimer = hopTimerOffset;
+
 		stamina.max = 100;
 		stamina.cur = stamina.max;
+
+		Screen.autorotateToLandscapeLeft = true;
 	}
 
 	Vector2 from = new Vector2();
@@ -46,17 +55,29 @@ public class Flo : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		hopTimer -= Time.deltaTime * Map.gameSpeed;
+
 		if (Map.gameSpeed <= 0) {
 			rb.simulated = false;
 		} else {
 			rb.simulated = true;
 		}
+
 		bool flap = Input.GetMouseButtonDown (0);
+		if (demo) {
+			if (transform.position.y < 0 && hopTimer < 0) {
+				flap = true;
+				hopTimer = hopTimerOffset;
+			} else if(transform.position.y > 0 && hopTimer < 0) {
+				flap = false;
+			}
+		}
 		if (flap && stamina.cur > 0) {
 			from = transform.position;
 			Flap (from + Vector2.up);
 			flapPower = 2;
-			stamina.cur -= 1;
+			stamina.cur -= 2;
 		}
 		if (rb.velocity.magnitude > maxForce) {
 			rb.velocity = rb.velocity.normalized * maxForce;
@@ -74,5 +95,13 @@ public class Flo : MonoBehaviour {
 		trail.transform.localScale = new Vector3 (0.1f * Map.mapSpeed, 1, 1);
 
 		maxForce *= Map.gameSpeed;
+	}
+
+	void OnDestroy(){
+		// Play ad?
+		// Watch ad - Get second attempt
+		// Show shop
+		// Show retry menu
+		// Init game
 	}
 }

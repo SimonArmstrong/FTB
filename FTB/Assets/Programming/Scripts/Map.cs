@@ -21,7 +21,7 @@ public class Map : MonoBehaviour {
 			parallax.layers.Add (new ParallaxLayer ());
 		}
 
-		parallax.layers [3].layerObjects.Add (GameObject.FindGameObjectWithTag("P_Layer3"));
+		parallax.AddToLayer(GameObject.FindGameObjectWithTag("P_Layer3"), 14);
 		parallax.InitLayers ();
 
 		//InvokeRepeating ("SpawnObstacle", 10f, 15f);
