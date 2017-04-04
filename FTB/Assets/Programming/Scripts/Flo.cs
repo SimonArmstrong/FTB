@@ -18,11 +18,21 @@ public class Flo : MonoBehaviour {
 
 	public float flapForce;
 
+	[System.Serializable]
+	public struct Stat{
+		public float cur;
+		public float max;
+	}
+
+	public static Stat stamina;
+
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
 		AS = GetComponent<AudioSource> ();
+		stamina.max = 100;
+		stamina.cur = stamina.max;
 	}
 
 	Vector2 from = new Vector2();
@@ -42,14 +52,18 @@ public class Flo : MonoBehaviour {
 			rb.simulated = true;
 		}
 		bool flap = Input.GetMouseButtonDown (0);
-		if (flap) {
+		if (flap && stamina.cur > 0) {
 			from = transform.position;
 			Flap (from + Vector2.up);
 			flapPower = 2;
+			stamina.cur -= 1;
 		}
 		if (rb.velocity.magnitude > maxForce) {
 			rb.velocity = rb.velocity.normalized * maxForce;
 		}
+
+		if (stamina.cur > stamina.max)
+			stamina.cur = stamina.max;
 
 		if(flapPower > 1) flapPower -= Time.deltaTime;
 
