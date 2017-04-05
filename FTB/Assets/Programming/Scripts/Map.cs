@@ -41,12 +41,13 @@ public class Map : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			paused = !paused;
 		}
+/*
 		if (paused) {
 			gameSpeed = 0;
 		} else {
 			gameSpeed = 1;
 		}
-
+*/
 		for (int i = 0; i < parallax.layers.Count; i++) {
 			ParallaxLayer layer = parallax.layers [i];
 			layer.speed = mapSpeed / (i + 1);
@@ -60,6 +61,8 @@ public class Map : MonoBehaviour {
 		Flo.distance += mapSpeed * Time.deltaTime * gameSpeed / 10;
 
 		if(mapSpeed < maxMapSpeed)
-			mapSpeed += 0.1f * Time.deltaTime * gameSpeed;
+			mapSpeed += 0.1f * Time.deltaTime;
+
+		mapSpeed *= gameSpeed;
 	}
 }

@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Magnet : MonoBehaviour {
+
+	public GameObject flo;
+
+	void Update(){
+		transform.position = flo.transform.position;
+		transform.rotation = flo.transform.rotation;
+	}
+
 	void OnTriggerStay2D(Collider2D other){
 		if (other.tag == "coin") {
 			other.transform.position = Vector3.Lerp (other.transform.position, transform.position, Time.deltaTime * Map.gameSpeed * Map.mapSpeed);

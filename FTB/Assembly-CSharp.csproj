@@ -52,6 +52,7 @@
      <Compile Include="Assets\Programming\Scripts\Coin.cs" />
      <Compile Include="Assets\Programming\Scripts\DestroyAfterAnimation.cs" />
      <Compile Include="Assets\Programming\Scripts\DestroyTouched.cs" />
+     <Compile Include="Assets\Programming\Scripts\EasyList.cs" />
      <Compile Include="Assets\Programming\Scripts\Flo.cs" />
      <Compile Include="Assets\Programming\Scripts\Generate.cs" />
      <Compile Include="Assets\Programming\Scripts\Magnet.cs" />
@@ -65,6 +66,7 @@
      <Compile Include="Assets\Programming\Scripts\StaminaShadow.cs" />
      <Compile Include="Assets\Programming\classes\Parallax.cs" />
      <Compile Include="Assets\Programming\classes\ParallaxLayer.cs" />
+     <None Include="Assets\Art\Materials\Font\Kottke Silkscreen License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

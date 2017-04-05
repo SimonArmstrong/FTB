@@ -20,7 +20,7 @@ public class Flo : MonoBehaviour {
 
 	public bool demo;
 	private float hopTimer;
-	private float hopTimerOffset = 0.6f;
+	private float hopTimerOffset = 0.3f;
 
 	[System.Serializable]
 	public struct Stat{
@@ -52,7 +52,7 @@ public class Flo : MonoBehaviour {
 		}
 		rb.AddForce (Vector2.up * flapForce);
 	}
-
+	float t = 1;
 	// Update is called once per frame
 	void Update () {
 
@@ -77,7 +77,7 @@ public class Flo : MonoBehaviour {
 			from = transform.position;
 			Flap (from + Vector2.up);
 			flapPower = 2;
-			stamina.cur -= 2;
+			//stamina.cur -= 2;
 		}
 		if (rb.velocity.magnitude > maxForce) {
 			rb.velocity = rb.velocity.normalized * maxForce;
@@ -95,6 +95,22 @@ public class Flo : MonoBehaviour {
 		trail.transform.localScale = new Vector3 (0.1f * Map.mapSpeed, 1, 1);
 
 		maxForce *= Map.gameSpeed;
+
+		if (stamina.cur <= 0) {
+			t -= Time.deltaTime;
+			Map.gameSpeed = 0;
+			if (t <= 0) {
+				Map.gameSpeed = 1;
+			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.tag == "danger") {
+			// Dead
+			Flo.stamina.cur = 0;
+			animator.SetBool ("hit", true);
+		}
 	}
 
 	void OnDestroy(){

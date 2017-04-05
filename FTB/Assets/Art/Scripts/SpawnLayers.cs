@@ -24,15 +24,15 @@ public class SpawnLayers : MonoBehaviour {
 			Vector3 randomYPosition = new Vector3 (transform.position.x,
 				Random.Range(-4, 4));
 
-			GameObject go = Instantiate<GameObject> (coins [0], randomYPosition, Quaternion.identity);
+			GameObject go = Instantiate<GameObject> (coins [Random.Range(0, coins.Count)], randomYPosition, Quaternion.identity);
 			int rarityRandomizer = Random.Range(0, 100);
 			if (coins.Count > 0) {
 				if (rarityRandomizer == 1) {
-					go.GetComponent<SpriteRenderer> ().color = Color.magenta;
-					go.GetComponent<Coin> ().value = 100;
+					//go.GetComponent<SpriteRenderer> ().color = Color.magenta;
+					//go.GetComponent<Coin> ().value = 100;
 				} else {
-					go.GetComponent<Coin> ().value = 10;
-					go.GetComponent<SpriteRenderer> ().color = Color.white;
+					//go.GetComponent<Coin> ().value = 10;
+					//go.GetComponent<SpriteRenderer> ().color = Color.white;
 				}
 				Map.parallax.AddToLayer (go, 0);
 			}
@@ -60,7 +60,7 @@ public class SpawnLayers : MonoBehaviour {
 			time = timeOffset;
 		}
 
-		if(mainTimeOffset > 0.2f)
+		if(mainTimeOffset > 1f)
 			mainTimeOffset -= 0.1f * Time.deltaTime * Map.gameSpeed;
 	}
 }
