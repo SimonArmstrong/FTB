@@ -48,7 +48,7 @@ public class Flo : MonoBehaviour {
 	//Vector2 to;
 	void Flap(Vector2 to){
 		if (rb.velocity.magnitude > maxForce) {
-			rb.velocity = rb.velocity.normalized * maxForce;
+			rb.velocity = (rb.velocity.normalized * maxForce) * Map.gameSpeed;
 		}
 		rb.AddForce (Vector2.up * flapForce);
 	}
@@ -80,7 +80,7 @@ public class Flo : MonoBehaviour {
 			//stamina.cur -= 2;
 		}
 		if (rb.velocity.magnitude > maxForce) {
-			rb.velocity = rb.velocity.normalized * maxForce;
+			rb.velocity = (rb.velocity.normalized * maxForce) * Map.gameSpeed;;
 		}
 
 		if (stamina.cur > stamina.max)
@@ -94,7 +94,6 @@ public class Flo : MonoBehaviour {
 		animator.SetFloat("flapPower", flapPower);
 		trail.transform.localScale = new Vector3 (0.1f * Map.mapSpeed, 1, 1);
 
-		maxForce *= Map.gameSpeed;
 
 		if (stamina.cur <= 0) {
 			t -= Time.deltaTime;
@@ -102,7 +101,9 @@ public class Flo : MonoBehaviour {
 			if (t <= 0) {
 				Map.gameSpeed = 1;
 			}
+			Map.mapSpeed = 0;
 		}
+		//maxForce *=
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

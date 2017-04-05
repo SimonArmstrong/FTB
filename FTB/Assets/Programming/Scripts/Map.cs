@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour {
 	public static float mapSpeed = 1.2f;
 	public static float gameSpeed = 1.0f;
-	public static float maxMapSpeed = 5;
+	public static float maxMapSpeed = 20;
 	private bool paused = false;
 	//public static List<ParallaxLayer> layers = new List<ParallaxLayer>();
 	public int ParallaxLayers;
@@ -58,9 +58,9 @@ public class Map : MonoBehaviour {
 			} 
 		}
 
-		Flo.distance += mapSpeed * Time.deltaTime * gameSpeed / 10;
+		Flo.distance += (mapSpeed * Time.deltaTime * gameSpeed) * 0.1f;
 
-		if(mapSpeed < maxMapSpeed)
+		if(mapSpeed < maxMapSpeed && gameSpeed > 0)
 			mapSpeed += 0.1f * Time.deltaTime;
 
 		mapSpeed *= gameSpeed;

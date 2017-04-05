@@ -51,7 +51,7 @@ public class SpawnLayers : MonoBehaviour {
 			);
 			Vector3 randomHeight = new Vector3 (transform.position.x, Random.Range(-4, 4), 0);
 			if(Main.Count > 0)
-				Map.parallax.AddToLayer (Instantiate<GameObject> (Main [Random.Range (0, Main.Count)], randomYPosition, Quaternion.Euler (Vector3.zero)), 0);
+				Map.parallax.AddToLayer (Instantiate<GameObject> (Main [Random.Range (0, Main.Count)], randomYPosition, Quaternion.Euler (randomRotation)), 0);
 			if (MidBackground.Count > 0)
 				Map.parallax.AddToLayer (Instantiate<GameObject> (MidBackground [random_cloud], randomYPosition, Quaternion.identity), 2);
 			if (Background.Count > 0)
