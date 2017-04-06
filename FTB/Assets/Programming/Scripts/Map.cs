@@ -6,6 +6,7 @@ public class Map : MonoBehaviour {
 	public static float mapSpeed = 1.2f;
 	public static float gameSpeed = 1.0f;
 	public static float maxMapSpeed = 20;
+	private float lastSpeed;
 	private bool paused = false;
 	//public static List<ParallaxLayer> layers = new List<ParallaxLayer>();
 	public int ParallaxLayers;
@@ -13,6 +14,10 @@ public class Map : MonoBehaviour {
 	public List<GameObject> threats = new List<GameObject>();
 	public List<GameObject> coinChunks = new List<GameObject>();
 	public static Parallax parallax = new Parallax();
+
+	void Reset(){
+		
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -41,13 +46,13 @@ public class Map : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			paused = !paused;
 		}
-/*
+
 		if (paused) {
 			gameSpeed = 0;
 		} else {
 			gameSpeed = 1;
 		}
-*/
+
 		for (int i = 0; i < parallax.layers.Count; i++) {
 			ParallaxLayer layer = parallax.layers [i];
 			layer.speed = mapSpeed / (i + 1);
@@ -61,8 +66,12 @@ public class Map : MonoBehaviour {
 		Flo.distance += (mapSpeed * Time.deltaTime * gameSpeed) * 0.1f;
 
 		if(mapSpeed < maxMapSpeed && gameSpeed > 0)
-			mapSpeed += 0.1f * Time.deltaTime;
-
-		mapSpeed *= gameSpeed;
+			mapSpeed += 0.1f * Time.deltaTime * gameSpeed;
+		
+		if(gameSpeed == 1)
+			lastSpeed = mapSpeed;
+		else if (Flo.stamina.cur > 0)
+			mapSpeed = lastSpeed + (mapSpeed * gameSpeed);
+		
 	}
 }

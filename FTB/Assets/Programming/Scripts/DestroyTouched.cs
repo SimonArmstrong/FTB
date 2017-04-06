@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class DestroyTouched : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
-		Map.parallax.RemoveItem (other.gameObject);
-		Destroy (other.gameObject);
+		if (other.gameObject.tag == "Player") {
+			Flo.isDead = true;
+		} else {
+			Map.parallax.RemoveItem (other.gameObject);
+			Destroy (other.gameObject);
+		}
 	}
 }

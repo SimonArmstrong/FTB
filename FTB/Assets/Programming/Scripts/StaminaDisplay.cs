@@ -13,6 +13,6 @@ public class StaminaDisplay : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		slider.value = Flo.stamina.cur;
+		slider.value = Flo.mps;
 	}
 }

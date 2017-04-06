@@ -61,6 +61,7 @@
      <Compile Include="Assets\Programming\Scripts\Obstacle.cs" />
      <Compile Include="Assets\Programming\Scripts\Pickup.cs" />
      <Compile Include="Assets\Programming\Scripts\Player.cs" />
+     <Compile Include="Assets\Programming\Scripts\Radius.cs" />
      <Compile Include="Assets\Programming\Scripts\ScoreDisplay.cs" />
      <Compile Include="Assets\Programming\Scripts\StaminaDisplay.cs" />
      <Compile Include="Assets\Programming\Scripts\StaminaShadow.cs" />

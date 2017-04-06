@@ -17,8 +17,8 @@ public class SpawnLayers : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		mainTime -= Time.deltaTime * Map.gameSpeed;
-		time -= Time.deltaTime * Map.gameSpeed;
+		mainTime -= (Time.deltaTime * Map.gameSpeed);
+		time -= (Time.deltaTime * Map.gameSpeed);
 
 		if (mainTime <= 0) {
 			Vector3 randomYPosition = new Vector3 (transform.position.x,
@@ -38,8 +38,6 @@ public class SpawnLayers : MonoBehaviour {
 			}
 			mainTime = mainTimeOffset;
 		}
-
-
 
 		if (time <= 0) {
 			int random_cloud = Random.Range (0, 3);
@@ -61,6 +59,6 @@ public class SpawnLayers : MonoBehaviour {
 		}
 
 		if(mainTimeOffset > 1f)
-			mainTimeOffset -= 0.1f * Time.deltaTime * Map.gameSpeed;
+			mainTimeOffset -= 0.1f * (Time.deltaTime * Map.gameSpeed);
 	}
 }

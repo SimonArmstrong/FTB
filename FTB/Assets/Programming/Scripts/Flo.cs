@@ -15,12 +15,16 @@ public class Flo : MonoBehaviour {
 	public GameObject trail;
 	[HideInInspector]
 	public static AudioSource AS;
+	public static bool onDeathSequence;
+	public static bool isDead;
 
 	public float flapForce;
 
 	public bool demo;
 	private float hopTimer;
 	private float hopTimerOffset = 0.3f;
+
+	public static float mps;
 
 	[System.Serializable]
 	public struct Stat{
@@ -58,6 +62,8 @@ public class Flo : MonoBehaviour {
 
 		hopTimer -= Time.deltaTime * Map.gameSpeed;
 
+		mps = Map.mapSpeed * 0.1f;
+
 		if (Map.gameSpeed <= 0) {
 			rb.simulated = false;
 		} else {
@@ -69,18 +75,20 @@ public class Flo : MonoBehaviour {
 			if (transform.position.y < 0 && hopTimer < 0) {
 				flap = true;
 				hopTimer = hopTimerOffset;
-			} else if(transform.position.y > 0 && hopTimer < 0) {
+			} else if (transform.position.y > -3 && hopTimer < 0) {
 				flap = false;
 			}
 		}
-		if (flap && stamina.cur > 0) {
-			from = transform.position;
-			Flap (from + Vector2.up);
-			flapPower = 2;
-			//stamina.cur -= 2;
+		if (!onDeathSequence) {
+			if (flap && stamina.cur > 0) {
+				from = transform.position;
+				Flap (from + Vector2.up);
+				flapPower = 2;
+				//stamina.cur -= 2;
+			}
 		}
 		if (rb.velocity.magnitude > maxForce) {
-			rb.velocity = (rb.velocity.normalized * maxForce) * Map.gameSpeed;;
+			rb.velocity = (rb.velocity.normalized * maxForce) * Map.gameSpeed;
 		}
 
 		if (stamina.cur > stamina.max)
@@ -104,11 +112,20 @@ public class Flo : MonoBehaviour {
 			Map.mapSpeed = 0;
 		}
 		//maxForce *=
+
+		if (isDead) {
+			Map.mapSpeed = 0;
+			Map.gameSpeed = 0;
+			rb.simulated = false;
+			GetComponent<SpriteRenderer> ().enabled = false;
+			onDeathSequence = false;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "danger") {
 			// Dead
+			onDeathSequence = true;
 			Flo.stamina.cur = 0;
 			animator.SetBool ("hit", true);
 		}
@@ -116,6 +133,7 @@ public class Flo : MonoBehaviour {
 
 	void OnDestroy(){
 		// Play ad?
+
 		// Watch ad - Get second attempt
 		// Show shop
 		// Show retry menu
