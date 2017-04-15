@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Flo : MonoBehaviour {
 
+	[System.Serializable]
+	public struct Stat{
+		public float cur;
+		public float max;
+	}
 	public Animator animator;
 	public Rigidbody2D rb;
 	public float rotationAmount;
 	public float maxForce;
 	public float maxFallSpeed;
-	public static float currency;
+	public static Stat currency;
 	public static float distance;
 	private float flapPower;
 	public GameObject trail;
 	[HideInInspector]
 	public static AudioSource AS;
+	public AudioSource uiAS;
 	public static bool onDeathSequence;
 	public static bool isDead;
 
@@ -26,19 +32,18 @@ public class Flo : MonoBehaviour {
 
 	public static float mps;
 
-	[System.Serializable]
-	public struct Stat{
-		public float cur;
-		public float max;
-	}
-
 	public static Stat stamina;
+
+	void OnPause(){
+		Map.gameSpeed = 0;
+	}
 
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
-		AS = GetComponent<AudioSource> ();
+		AS = GetComponents<AudioSource> ()[0];
+		uiAS = GetComponents<AudioSource> ()[1];
 
 		hopTimer = hopTimerOffset;
 
@@ -46,6 +51,7 @@ public class Flo : MonoBehaviour {
 		stamina.cur = stamina.max;
 
 		Screen.autorotateToLandscapeLeft = true;
+		//currency.cur = 1000;
 	}
 
 	Vector2 from = new Vector2();
@@ -119,6 +125,24 @@ public class Flo : MonoBehaviour {
 			rb.simulated = false;
 			GetComponent<SpriteRenderer> ().enabled = false;
 			onDeathSequence = false;
+			ShowDeathMenu.show = true;
+			AddUpCoins ();
+		}
+
+	}
+
+	float aup_t = 0.01f;
+	public void AddUpCoins(){
+		aup_t -= Time.deltaTime;
+		int total = (int)currency.cur;
+		if (aup_t < 0) {
+			if (currency.cur > 0) {
+				currency.max++;
+				uiAS.pitch += 0.01f;
+				uiAS.Play ();
+				currency.cur--;
+			}
+			aup_t = 0.01f;
 		}
 	}
 

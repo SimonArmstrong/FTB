@@ -13,6 +13,6 @@ public class ScoreDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		text.text = Flo.currency.ToString();
+		text.text = Flo.currency.cur.ToString();
 	}
 }

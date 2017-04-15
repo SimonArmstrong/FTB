@@ -14,9 +14,13 @@ public class Map : MonoBehaviour {
 	public List<GameObject> threats = new List<GameObject>();
 	public List<GameObject> coinChunks = new List<GameObject>();
 	public static Parallax parallax = new Parallax();
+	public GameObject moon;
 
-	void Reset(){
-		
+
+	public static void Reset(){
+		//Map.parallax.RemoveItem (GameObject.FindGameObjectWithTag ("P_Layer3"));
+		//Map.parallax.AddToLayer(GameObject.FindGameObjectWithTag("P_Layer3"), 49);
+
 	}
 
 	// Use this for initialization
@@ -25,22 +29,11 @@ public class Map : MonoBehaviour {
 		for (int i = 0; i < ParallaxLayers; i++) {
 			parallax.layers.Add (new ParallaxLayer ());
 		}
+		Map.parallax.InitLayers ();
 
-		parallax.AddToLayer(GameObject.FindGameObjectWithTag("P_Layer3"), 14);
-		parallax.InitLayers ();
-
-		//InvokeRepeating ("SpawnObstacle", 10f, 15f);
-		//InvokeRepeating ("SpawnCoins", 10f, 15f);
+		moon = Resources.Load<GameObject>("moon");
+		parallax.AddToLayer (Instantiate<GameObject>(moon, new Vector3(2, 0, 0), Quaternion.identity), 30);
 	}
-
-	void SpawnObstacle(){
-		Instantiate (threats [Random.Range (0, threats.Count)]);
-	}
-
-	void SpawnCoins(){
-		Instantiate (coinChunks [Random.Range (0, coinChunks.Count)]);
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Escape)) {

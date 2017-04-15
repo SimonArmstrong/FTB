@@ -1,20 +1,24 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Programming\Scripts\Flo.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Programming\Scripts\ContentButton.cs">
     <Files>
-      <File FileName="Assets\Programming\Scripts\DestroyAfterAnimation.cs" Line="7" Column="18" />
+      <File FileName="Assets\Programming\Scripts\DestroyAfterAnimation.cs" Line="8" Column="20" />
       <File FileName="Assets\Art\Scripts\FloParticles.cs" Line="17" Column="57" />
-      <File FileName="Assets\Art\Scripts\ParticleLifetime.cs" Line="28" Column="138" />
-      <File FileName="Assets\Art\Scripts\SpawnLayers.cs" Line="62" Column="62" />
-      <File FileName="Assets\Programming\classes\Parallax.cs" Line="18" Column="41" />
-      <File FileName="Assets\Programming\classes\ParallaxLayer.cs" Line="17" Column="76" />
-      <File FileName="Assets\Programming\Scripts\Flo.cs" Line="27" Column="15" />
-      <File FileName="Assets\Programming\Scripts\DestroyTouched.cs" Line="11" Column="31" />
-      <File FileName="Assets\Programming\Scripts\Magnet.cs" Line="20" Column="29" />
-      <File FileName="Assets\Programming\Scripts\Map.cs" Line="45" Column="18" />
+      <File FileName="Assets\Art\Scripts\SpawnLayers.cs" Line="38" Column="5" />
+      <File FileName="Assets\Programming\classes\Parallax.cs" Line="12" Column="3" />
+      <File FileName="Assets\Programming\classes\ParallaxLayer.cs" Line="14" Column="1" />
+      <File FileName="Assets\Programming\Scripts\Magnet.cs" Line="18" Column="140" />
+      <File FileName="Assets\Programming\Scripts\Map.cs" Line="27" Column="17" />
       <File FileName="Assets\Programming\Scripts\Radius.cs" Line="13" Column="4" />
       <File FileName="Assets\Programming\Scripts\Coin.cs" Line="1" Column="1" />
       <File FileName="Assets\Programming\Scripts\StaminaDisplay.cs" Line="16" Column="25" />
+      <File FileName="Assets\Programming\Scripts\ScoreDisplay.cs" Line="16" Column="43" />
+      <File FileName="Assets\Programming\Scripts\Pickup.cs" Line="17" Column="88" />
+      <File FileName="Assets\Programming\Scripts\ResetGame.cs" Line="31" Column="106" />
+      <File FileName="Assets\Programming\Scripts\MeterDisplay.cs" Line="9" Column="32" />
+      <File FileName="Assets\Programming\Scripts\ShowDeathMenu.cs" Line="22" Column="61" />
+      <File FileName="Assets\Programming\Scripts\Flo.cs" Line="50" Column="25" />
+      <File FileName="Assets\Programming\Scripts\ContentButton.cs" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

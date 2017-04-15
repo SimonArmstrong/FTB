@@ -49,7 +49,9 @@
      <Compile Include="Assets\Art\Scripts\FloParticles.cs" />
      <Compile Include="Assets\Art\Scripts\ParticleLifetime.cs" />
      <Compile Include="Assets\Art\Scripts\SpawnLayers.cs" />
+     <Compile Include="Assets\PresentMenu.cs" />
      <Compile Include="Assets\Programming\Scripts\Coin.cs" />
+     <Compile Include="Assets\Programming\Scripts\ContentButton.cs" />
      <Compile Include="Assets\Programming\Scripts\DestroyAfterAnimation.cs" />
      <Compile Include="Assets\Programming\Scripts\DestroyTouched.cs" />
      <Compile Include="Assets\Programming\Scripts\EasyList.cs" />
@@ -62,7 +64,9 @@
      <Compile Include="Assets\Programming\Scripts\Pickup.cs" />
      <Compile Include="Assets\Programming\Scripts\Player.cs" />
      <Compile Include="Assets\Programming\Scripts\Radius.cs" />
+     <Compile Include="Assets\Programming\Scripts\ResetGame.cs" />
      <Compile Include="Assets\Programming\Scripts\ScoreDisplay.cs" />
+     <Compile Include="Assets\Programming\Scripts\ShowDeathMenu.cs" />
      <Compile Include="Assets\Programming\Scripts\StaminaDisplay.cs" />
      <Compile Include="Assets\Programming\Scripts\StaminaShadow.cs" />
      <Compile Include="Assets\Programming\classes\Parallax.cs" />

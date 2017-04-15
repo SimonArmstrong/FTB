@@ -17,7 +17,7 @@ public class Pickup : MonoBehaviour {
 			//Instantiate<GameObject> (pickupParticle, transform.position, Quaternion.identity);
 			//Destroy (gameObject);
 			//increment player coins
-			Flo.currency += value;
+			Flo.currency.cur += value;
 		}
 	}
 
