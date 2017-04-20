@@ -78,6 +78,7 @@
 Assets/Art/Scripts/FloParticles.cs
 Assets/Art/Scripts/ParticleLifetime.cs
 Assets/Art/Scripts/SpawnLayers.cs
+Assets/Programming/Database/Skins.cs
 Assets/Programming/Scripts/Coin.cs
 Assets/Programming/Scripts/ContentButton.cs
 Assets/Programming/Scripts/DestroyAfterAnimation.cs
@@ -91,12 +92,14 @@ Assets/Programming/Scripts/MeterDisplay.cs
 Assets/Programming/Scripts/Obstacle.cs
 Assets/Programming/Scripts/Pickup.cs
 Assets/Programming/Scripts/Player.cs
+Assets/Programming/Scripts/PresentMenu.cs
 Assets/Programming/Scripts/Radius.cs
 Assets/Programming/Scripts/ResetGame.cs
 Assets/Programming/Scripts/ScoreDisplay.cs
 Assets/Programming/Scripts/ShowDeathMenu.cs
 Assets/Programming/Scripts/StaminaDisplay.cs
 Assets/Programming/Scripts/StaminaShadow.cs
+Assets/Programming/classes/GameMenu.cs
 Assets/Programming/classes/Parallax.cs
 Assets/Programming/classes/ParallaxLayer.cs
 -r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Runtime.Serialization.dll"

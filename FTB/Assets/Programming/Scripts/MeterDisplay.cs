@@ -13,6 +13,6 @@ public class MeterDisplay : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		text.text = Flo.distance.ToString("0.00");
+		text.text = Flo.distance.ToString("0");
 	}
 }

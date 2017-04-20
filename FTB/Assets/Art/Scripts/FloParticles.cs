@@ -8,7 +8,7 @@ public class FloParticles : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		bool flap = Input.GetMouseButtonDown (0);
-		if (flap) {
+		if (flap && !Flo.isDead) {
 			float randomX, randomY, randomZ;
 			randomX = Random.Range (-0.5f, 0.5f);
 			randomY = Random.Range (-0.2f, 0.2f);

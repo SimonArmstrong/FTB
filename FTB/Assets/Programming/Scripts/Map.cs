@@ -15,12 +15,14 @@ public class Map : MonoBehaviour {
 	public List<GameObject> coinChunks = new List<GameObject>();
 	public static Parallax parallax = new Parallax();
 	public GameObject moon;
+	public static bool isInGame = true;
 
+	public void Pause(){
+		paused = !paused;
+	}
 
-	public static void Reset(){
-		//Map.parallax.RemoveItem (GameObject.FindGameObjectWithTag ("P_Layer3"));
-		//Map.parallax.AddToLayer(GameObject.FindGameObjectWithTag("P_Layer3"), 49);
-
+	public static void Reset(){		
+		isInGame = true;
 	}
 
 	// Use this for initialization

@@ -24,6 +24,12 @@ public class Flo : MonoBehaviour {
 	public static bool onDeathSequence;
 	public static bool isDead;
 
+	public List<Sprite> initialSkinFrames = new List<Sprite> ();
+
+	public float frame;
+	public static Skin skin;
+	public static List<Sprite> skinFrames = new List<Sprite> ();
+
 	public float flapForce;
 
 	public bool demo;
@@ -31,8 +37,13 @@ public class Flo : MonoBehaviour {
 	private float hopTimerOffset = 0.3f;
 
 	public static float mps;
+	public SpriteRenderer sr;
 
 	public static Stat stamina;
+
+	public void MakeFrame(Sprite sprite){
+		sr.sprite = sprite;
+	}
 
 	void OnPause(){
 		Map.gameSpeed = 0;
@@ -44,6 +55,7 @@ public class Flo : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		AS = GetComponents<AudioSource> ()[0];
 		uiAS = GetComponents<AudioSource> ()[1];
+		sr = GetComponent<SpriteRenderer> ();
 
 		hopTimer = hopTimerOffset;
 
@@ -65,7 +77,7 @@ public class Flo : MonoBehaviour {
 	float t = 1;
 	// Update is called once per frame
 	void Update () {
-
+		//MakeFrame (skinFrames [(int)frame]);
 		hopTimer -= Time.deltaTime * Map.gameSpeed;
 
 		mps = Map.mapSpeed * 0.1f;
@@ -125,7 +137,8 @@ public class Flo : MonoBehaviour {
 			rb.simulated = false;
 			GetComponent<SpriteRenderer> ().enabled = false;
 			onDeathSequence = false;
-			ShowDeathMenu.show = true;
+			//ShowDeathMenu.show = true;
+			Map.isInGame = false;
 			AddUpCoins ();
 		}
 
@@ -137,9 +150,9 @@ public class Flo : MonoBehaviour {
 		int total = (int)currency.cur;
 		if (aup_t < 0) {
 			if (currency.cur > 0) {
+				//uiAS.pitch += 0.01f;
+				//uiAS.Play ();
 				currency.max++;
-				uiAS.pitch += 0.01f;
-				uiAS.Play ();
 				currency.cur--;
 			}
 			aup_t = 0.01f;

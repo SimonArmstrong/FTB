@@ -27,7 +27,8 @@ public class ResetGame : MonoBehaviour {
 			Map.parallax.layers [i].layerObjects.Clear();
 		}
 		Map.Reset ();
-		ShowDeathMenu.show = false;
+		//ShowDeathMenu.show = false;
+		GameMenuManager.HideAll();
 		Map.parallax.AddToLayer (Instantiate<GameObject>(moon, new Vector3(2, 0, 0), Quaternion.identity), 30);
 	}
 

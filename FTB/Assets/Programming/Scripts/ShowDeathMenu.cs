@@ -16,13 +16,14 @@ public class ShowDeathMenu : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (show) {
 			if (rt.localPosition.y <= 90) {
 				rt.localPosition = rt.localPosition + new Vector3 (0, 2000, 0) * Time.deltaTime;
 			}
+			//Debug.Log ("OPEN");
 		} else {
-			rt.localPosition = Vector2.Lerp (start, Vector2.zero, Time.deltaTime);
+			rt.localPosition = start;
 		}
 	}
 }
